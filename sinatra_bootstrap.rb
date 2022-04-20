@@ -54,6 +54,17 @@ post '/visit' do
 
         if @user_name == ''
           @error = 'Введите имя!'
+        end
+
+        if @user_phone == ''
+          @error = 'Введите номер телефона'
+        end
+
+        if @date_time == ''
+          @error = 'Неправильная дата и время'
+        end
+
+        if @error != ''
           return erb :visit
         end
 
