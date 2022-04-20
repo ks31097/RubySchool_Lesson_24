@@ -52,20 +52,24 @@ post '/visit' do
         output.write "User: #{@user_name}, Phone: #{@user_phone}, Date and time: #{@date_time}, master: #{@master}, color: #{@color}\n"
         output.close
 
-        if @user_name == ''
-          @error = 'Введите имя!'
-        end
+        # хэш с пара ключ-значение (символ-значение ошибки)
+        hash_error = { :user_name => 'Введите имя!',
+                       :user_phone => 'Введите номер телефона!',
+                       :date_time => 'Неправильная дата и время!' }
 
-        if @user_phone == ''
-          @error = 'Введите номер телефона'
-        end
+        # для каждой пары ключ-значение
+        hash_error.each do |key, value|
 
-        if @date_time == ''
-          @error = 'Неправильная дата и время'
-        end
+          # если параметр пуст
+          if params[key] == ''
+            # переменной error присвоить value из хэша hash_error
+            # (value - из хэша hash_error это сообщение об ошибке)
+            # т.е. переменной error присвоить сообщение об ошибке
+            @error = hash_error[key]
 
-        if @error != ''
-          return erb :visit
+            # вернуть представление visit
+            return erb :visit
+          end
         end
 
         erb :message
