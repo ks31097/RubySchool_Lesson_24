@@ -9,6 +9,7 @@ end
 
 get '/about' do
   @title = "О нас"
+  @error = 'Something wrong!'
   erb :about
 end
 
@@ -50,6 +51,11 @@ post '/visit' do
         output = File.open('./public/visits.txt', 'a')
         output.write "User: #{@user_name}, Phone: #{@user_phone}, Date and time: #{@date_time}, master: #{@master}, color: #{@color}\n"
         output.close
+
+        if @user_name == ''
+          @error = 'Введите имя!'
+          return erb :visit
+        end
 
         erb :message
 end
