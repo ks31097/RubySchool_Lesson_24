@@ -4,17 +4,17 @@
 <form action="/visit" method="POST">
   <div class="mb-3">
     <label>Ваше имя</label>
-    <input name="user_name" type="text" class="form-control" placeholder="Введите Ваше имя">
+    <input name="user_name" type="text" class="form-control" placeholder="Введите Ваше имя" value="<%= @user_name %>">
   </div>
 
   <div class="mb-3">
     <label>Ваш телефон</label>
-    <input name="user_phone" type="text" class="form-control" placeholder="Номер Вашего телефона">
+    <input name="user_phone" type="text" class="form-control" placeholder="Номер Вашего телефона" value="<%= @user_phone %>">
   </div>
 
   <div class="mb-3">
     <label>Когда Вас ждать?</label>
-    <input name="date_time" type="text" class="form-control" placeholder="Введите дату и время">
+    <input name="date_time" type="text" class="form-control" placeholder="Введите дату и время" value="<%= @date_time %>">
   </div>
 
   <div class="form-group">
@@ -50,7 +50,7 @@
 
 <script type="text/javascript">
   $(function() {
-    //тут может быть любой javascript код, который исполнится после загрузки страницы 
+    //тут может быть любой javascript код, который исполнится после загрузки страницы
     $('#color').simplecolorpicker(); //Инициализация и вызов плагина jQuery
   })
 </script>
