@@ -56,7 +56,7 @@ post '/visit' do
         hash_error = { :user_name => 'Введите имя!',
                        :user_phone => 'Введите номер телефона!',
                        :date_time => 'Неправильная дата и время!' }
-
+=begin
         # для каждой пары ключ-значение
         hash_error.each do |key, value|
 
@@ -71,6 +71,12 @@ post '/visit' do
             return erb :visit
           end
         end
+=end
 
+        @error = hash_error.select {|key,_| params[key] == ""}.values.join(" ")
+
+        if @error != ''
+          return erb :visit
+        end
         erb :message
 end
