@@ -57,6 +57,7 @@ post '/visit' do
                        :user_phone => 'Введите номер телефона!',
                        :date_time => 'Неправильная дата и время!' }
 =begin
+        # Вариант №1
         # для каждой пары ключ-значение
         hash_error.each do |key, value|
 
@@ -73,10 +74,12 @@ post '/visit' do
         end
 =end
 
+        # Вариант №2
         @error = hash_error.select {|key,_| params[key] == ""}.values.join(" ")
 
         if @error != ''
           return erb :visit
         end
+        
         erb :message
 end
